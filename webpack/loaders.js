@@ -7,6 +7,7 @@ var TEST = process.env.NODE_ENV === 'test';
 
 var jsxLoader;
 var sassLoader;
+var lessLoader;
 var cssLoader;
 var fileLoader = 'file-loader?name=[path][name].[ext]';
 var htmlLoader = [
@@ -24,7 +25,8 @@ var jsonLoader = ['json-loader'];
 var sassParams = [
   'outputStyle=expanded',
   'includePaths[]=' + path.resolve(__dirname, '../app/scss'),
-  'includePaths[]=' + path.resolve(__dirname, '../node_modules')
+  'includePaths[]=' + path.resolve(__dirname, '../node_modules'),
+  "includePaths[]=" + path.resolve(__dirname, "../app/semantic/dist/components")
 ];
 
 if (DEBUG || TEST) {
@@ -36,26 +38,44 @@ if (DEBUG || TEST) {
   sassParams.push('sourceMap', 'sourceMapContents=true');
   sassLoader = [
     'style-loader',
-    'css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
-    'postcss-loader',
+    'css-loader?sourceMap',
+    // 'postcss-loader',
+    // 'resolve-url',
     'sass-loader?' + sassParams.join('&')
+  ].join('!');
+  lessLoader = [
+    'style-loader',
+    'css-loader?sourceMap',
+    // 'postcss-loader',
+    // 'resolve-url',
+    'less?source-map'
   ].join('!');
   cssLoader = [
     'style-loader',
-    'css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
-    'postcss-loader'
+    'css-loader?sourceMap',
+    // 'postcss-loader',
+    // 'resolve-url'
   ].join('!');
+  console.log(lessLoader);
 } else {
   jsxLoader = ['babel-loader?optional[]=runtime&stage=0&plugins=rewire'];
-  sassLoader = ExtractTextPlugin.extract('style-loader', [
-    'css-loader?modules&localIdentName=[hash:base64:5]',
-    'postcss-loader',
+  sassLoader = ['style-loader',
+    'css-loader',
+    // 'postcss-loader',
+    // 'resolve-url',
     'sass-loader?' + sassParams.join('&')
-  ].join('!'));
-  cssLoader = ExtractTextPlugin.extract('style-loader', [
-    'css-loader?modules&localIdentName=[hash:base64:5]',
-    'postcss-loader'
-  ].join('!'));
+  ].join('!');
+  lessLoader = ['style-loader', 
+    'css-loader?sourceMap',
+    // 'postcss-loader',
+    // 'resolve-url',
+    'less'
+  ].join('!');
+  cssLoader = ['style-loader', 
+    'css-loader',
+    // 'postcss-loader',
+    // 'resolve-url'
+  ].join('!');
 }
 
 var loaders = [
@@ -84,6 +104,14 @@ var loaders = [
   {
     test: /\.scss$/,
     loader: sassLoader
+  },
+  {
+    test: /\.less$/,
+    loader: lessLoader
+  },
+  {
+    test: /\.(png|eot|woff2|woff|ttf|svg)$/,
+    loader: 'file'
   }
 ];
 

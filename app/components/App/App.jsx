@@ -1,40 +1,34 @@
-import styles from './_App.scss';
-
 import React from 'react';
-import AppActions from '../../actions/AppActions';
-import ItemsStore from '../../stores/ItemsStore';
-import Body from '../Body/Body';
-import Footer from '../Footer/Footer';
 
-function getAppState() {
-  return {
-    items: ItemsStore.getAll()
-  };
-}
+import './styles.scss';
 
-export default class App extends React.Component {
+import '../../semantic/dist/components/grid.css';
+import '../../semantic/dist/components/segment.css';
 
-  state = getAppState()
+import {Navbar} from '../Navbar/Navbar';
 
-  componentDidMount() {
-    ItemsStore.addChangeListener(this.onChange);
-    AppActions.getItems();
-  }
-
-  componentWillUnmount() {
-    ItemsStore.removeChangeListener(this.onChange);
-  }
-
-  onChange = () => {
-    this.setState(getAppState());
-  }
-
+export class App extends React.Component {
   render() {
     return (
-      <div className={styles.app}>
-        <Body items={this.state.items} />
-        <Footer />
-      </div>
+    	<div>
+	    	<div id="masthead" className="ui inverted vertical center aligned segment">
+	    		<h1 className="header">
+	    			Joseph Shearer
+	    		</h1>
+	    		<h4 className="subHeader">
+	    			.net
+	    		</h4>
+	    	</div>
+	    	<div className="ui ten column page grid">
+	    		<div className="ui two wide column">
+		    		<Navbar routes={this.props.routes[0].childRoutes}/>
+		    	</div>
+		    	<div className="ui one wide column"/>
+		    	<div className="ui six wide column">
+			    	{this.props.children}
+			    </div>
+		    </div>
+	    </div>
     );
   }
 }
