@@ -1,5 +1,7 @@
 import React from 'react';
 
+import visitor from '../../ga';
+
 import './styles.scss';
 
 import '../../semantic/dist/components/grid.css';
@@ -15,6 +17,7 @@ class App extends React.Component {
 		this.state = {
 			active_page: null
 		}
+		visitor.pageview('/').send();
 	}
 
 	getStateFromFlux() {

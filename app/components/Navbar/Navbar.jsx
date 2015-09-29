@@ -3,6 +3,10 @@ import $ from 'jquery';
 import '../../semantic/dist/components/sticky.css';
 import '../../semantic/dist/components/sticky.js';
 
+import visitor from '../../ga';
+
+import size from 'window-size';
+
 import React from 'react'; 
 import { Link } from 'react-router';
 import _ from 'lodash';
@@ -12,6 +16,7 @@ let letter_words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven
 export class Navbar extends React.Component {
 
 	nagivateTo(page,evt){
+		visitor.pageview('/'+page.path).send();
 		this.props.flux.getActions('pages').changePage(page.path);
 	}
 
