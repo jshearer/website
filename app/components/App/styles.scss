@@ -1,11 +1,16 @@
-#masthead{
-	margin-bottom: 20px;
-	h1{
-		display: inline;		
-	}
+#masthead {
+    margin-bottom: 20px;
+    h1 {
+        display: inline;
+    }
 }
 
-.subHeader{
-	display: inline;
-	color: lightgrey;
+.subHeader {
+    display: inline;
+    color: lightgrey;
+}
+
+#page-container {
+    width: 85%;
+    margin-left: auto;
 }

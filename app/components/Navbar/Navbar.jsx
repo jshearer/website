@@ -8,18 +8,23 @@ let letter_words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven
 
 export class Navbar extends React.Component {
 
+	nagivateTo(page,evt){
+		this.props.flux.getActions('pages').changePage(page.path);
+	}
+
 	render() {
+		let that = this;
 		let layout = (
-				<div className={"ui vertical menu"}>
+				<div className={"ui vertical fluid menu"}>
 					{
 						_.map(this.props.routes, (item, index)=>{
 							let active = '';
-							// if (item.isMounted()){
-							// 	active = 'active';
-							// }
+							if (that.props.flux.getStore('pages').isActive(item.path)){
+								active = 'active';
+							}
 
 							return (
-										<a className={"ui "+active+" item"} href={"#/"+item.path}>
+										<a className={"ui "+active+" item"} onClick={_.bind(this.nagivateTo,that,item)} href={"#/"+item.path}>
 											{item.path.charAt(0).toUpperCase() + item.path.slice(1)}
 										</a>
 									)

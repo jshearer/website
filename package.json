@@ -31,6 +31,7 @@
     "del": "^2.0.2",
     "exports-loader": "^0.6.2",
     "extend": "^3.0.0",
+    "flummox": "^3.5.2",
     "flux": "^2.0.3",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.2",
