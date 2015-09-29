@@ -3,8 +3,8 @@ import styles from '!!style-loader!css-loader?modules&localIdentName=[name]__[lo
 
 import '../../semantic/dist/components/label.css';
 
-// import '../../semantic/dist/components/progress.css';
-// import '../../semantic/dist/components/progress.js';
+import '../../semantic/dist/components/progress.css';
+import '../../semantic/dist/components/progress.js';
 
 class SubjectContainer extends React.Component{
 	render(){
@@ -26,7 +26,11 @@ SubjectContainer.propTypes = {
 class ComponentContainer extends React.Component{
 	render(){
 		let skills = _.map(this.props.skills, (skill) => {
-			return <Skill {...skill}/>;
+			if(skill.bar){
+				return <SkillBar {...skill}/>
+			} else{
+				return <Skill {...skill}/>;
+			}
 		})
 		let right_info = ((skills) => {
 		          		if(this.props.location||this.props.time||this.props.website){
@@ -47,12 +51,12 @@ class ComponentContainer extends React.Component{
 			<div className={styles["component-container"]}>
 				<h3 className={styles.title}>{this.props.title}</h3>
 
-		        <div className={styles["info-wrapper"]}>
-		          <div className={styles["left-info"]}>
+		        <div className={styles["info-wrapper"]+" ui grid"}>
+		          <div className="twelve wide column">
 		           {this.props.children}
 		          </div>
 
-		          <div className={styles["right-info"]}>
+		          <div className="four wide column">
 		          	{right_info}
 		          </div>
 		        </div>
@@ -61,16 +65,16 @@ class ComponentContainer extends React.Component{
 	}
 }
 
-// class Skill extends React.Component{
-// 	render(){
-// 		return (
-// 				<div className={"ui tiny "+this.props.color+" progress"} data-percent={this.props.pct}>
-// 				  <div className="bar" style={{"transition-duration": "300ms", "width": this.props.pct+"%"}}></div>
-// 				  <div className="label">{this.props.name}</div>
-// 				</div>
-// 			);
-// 	}
-// }
+class SkillBar extends React.Component{
+	render(){
+		return (
+				<div className={"ui tiny "+this.props.color+" progress"} data-percent={this.props.pct}>
+				  <div className="bar" style={{"transition-duration": "300ms", "width": this.props.pct+"%"}}></div>
+				  <div className="label">{this.props.name}</div>
+				</div>
+			);
+	}
+}
 
 class Skill extends React.Component{
 	render(){
@@ -88,9 +92,9 @@ export class Resume extends React.Component {
 				<SubjectContainer label="Education">
 					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020" 
 						skills={[
-								{"name":"Learning","pct":100,"color":"red"},
-								{"name":"Studying","pct":100,"color":"blue"},
-								{"name":"Sleeping","pct":0,"color":"green"}
+								{"name":"Studying","pct":65,"color":"green","bar":true},
+								{"name":"Learning","pct":80,"color":"blue","bar":true},
+								{"name":"Sleeping","pct":0,"color":"olive","bar":true}
 								]}>
 						<p className={styles.p}>B.S Computer Science</p>
 					</ComponentContainer>
@@ -145,7 +149,7 @@ export class Resume extends React.Component {
 										location="Westport, CT" 
 										time="December 2014 - May 2015"
 										website="www.designspring.com">
-						<h3 className={styles.title}>Harpsichord Project</h3>
+						<h3 className={styles.sub_title}>Harpsichord Project</h3>
 						<p className={styles.p}>Working in collaboration with Designspring Inc. and the music department
 			            at McGill University to design and develop a computer controlled analog
 			            harpsichord. The computer will record and control the position of the
@@ -171,7 +175,7 @@ export class Resume extends React.Component {
 			              MIDI instrument</li>
 			            </ul>
 
-			            <h3 className={styles.title}>Plasma Physics</h3>
+			            <h3 className={styles.sub_title}>Plasma Physics</h3>
 			            <p className={styles.p}>This is an ongoing astrophysics research project with an astrophysicist
 			            professor interested in planetary ring formation theory. The goal of the
 			            project is to simulate the environment in the rings of Saturn. I am

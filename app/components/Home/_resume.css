@@ -43,7 +43,6 @@ div.header h4 {
 
 .component-container {
     padding-left: 20px;
-    padding-bottom: 60px;
     clear: both;
 }
 
@@ -56,7 +55,7 @@ div.header h4 {
     margin: 0;
 }
 
-.left-info .title {
+.sub_title {
     font-weight: lighter;
     color: #226666;
     padding-bottom: 5px;
@@ -92,7 +91,6 @@ div.header h4 {
 
 .info-wrapper {
     padding-left: 20px;
-    font-size: 1.15em;
 }
 
 .right-info {
