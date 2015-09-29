@@ -1,6 +1,11 @@
 import React from 'react';
 import styles from '!!style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!./_resume.css';
 
+import '../../semantic/dist/components/label.css';
+
+// import '../../semantic/dist/components/progress.css';
+// import '../../semantic/dist/components/progress.js';
+
 class SubjectContainer extends React.Component{
 	render(){
 		return (
@@ -20,19 +25,24 @@ SubjectContainer.propTypes = {
 
 class ComponentContainer extends React.Component{
 	render(){
-		let right_info = (() => {
+		let skills = _.map(this.props.skills, (skill) => {
+			return <Skill {...skill}/>;
+		})
+		let right_info = ((skills) => {
 		          		if(this.props.location||this.props.time||this.props.website){
 		          			return (
 			          					<div>
 			          						<strong>{this.props.location}</strong><br />
 			            					<em>{this.props.time}</em><br />
 			            					<a href={this.props.website}>{this.props.website}</a>
+			            					{this.props.right_info}
+			            					{skills}
 			            				</div>
 		            				)
 		          		} else {
 		          			return this.props.right_info;
 		          		}
-		          	})();
+		          	})(skills);
 		return (
 			<div className={styles["component-container"]}>
 				<h3 className={styles.title}>{this.props.title}</h3>
@@ -51,13 +61,37 @@ class ComponentContainer extends React.Component{
 	}
 }
 
+// class Skill extends React.Component{
+// 	render(){
+// 		return (
+// 				<div className={"ui tiny "+this.props.color+" progress"} data-percent={this.props.pct}>
+// 				  <div className="bar" style={{"transition-duration": "300ms", "width": this.props.pct+"%"}}></div>
+// 				  <div className="label">{this.props.name}</div>
+// 				</div>
+// 			);
+// 	}
+// }
+
+class Skill extends React.Component{
+	render(){
+		return (
+				<div className={"ui medium "+this.props.color+" label "+styles['label-fix']} data-percent={this.props.pct}>{this.props.name}: {this.props.pct}%</div>
+			);
+	}
+}
+
 
 export class Resume extends React.Component {
 	render() {
 		return (
 			<div className={styles.body}>
 				<SubjectContainer label="Education">
-					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020">
+					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020" 
+						skills={[
+								{"name":"Learning","pct":100,"color":"red"},
+								{"name":"Studying","pct":100,"color":"blue"},
+								{"name":"Sleeping","pct":0,"color":"green"}
+								]}>
 						<p className={styles.p}>B.S Computer Science</p>
 					</ComponentContainer>
 				</SubjectContainer>

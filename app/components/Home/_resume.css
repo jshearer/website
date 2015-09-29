@@ -43,6 +43,7 @@ div.header h4 {
 
 .component-container {
     padding-left: 20px;
+    padding-bottom: 60px;
     clear: both;
 }
 
@@ -66,7 +67,7 @@ div.header h4 {
 }
 
 .p:before {
-    content: "‒ ";
+    content: "- ";
     color: #EB8F8F;
 }
 
@@ -85,7 +86,7 @@ div.header h4 {
 }
 
 .ul .li:before {
-    content: "‒ ";
+    content: "- ";
     color: #EB8F8F;
 }
 
@@ -105,4 +106,8 @@ div.header h4 {
     margin-top: 5px;
     float: left;
     width: 65%
+}
+
+.label-fix {
+    margin-top: 3px !important;
 }
