@@ -21,7 +21,7 @@ export class Navbar extends React.Component {
 	}
 
 	componentDidMount(){
-		if(this.props.stickyTo){
+		if(this.props.stickyTo && size.width>990){
 			$('.ui.sticky').sticky({
 				offset: 20,
 				context: this.props.stickyTo
