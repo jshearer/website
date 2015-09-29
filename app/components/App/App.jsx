@@ -37,7 +37,7 @@ class App extends React.Component {
 	    	<div className="ui page grid">
 		    	<div className="ui row">
 			    	<div className="ui segment" id="page-container">
-			    		<div className="ui left dividing rail">
+			    		<div className="ui left rail">
 		    				<FluxComponent>
 				    			<Navbar routes={this.props.routes[0].childRoutes} active_page={this.state.active_page}/>
 				    		</FluxComponent>

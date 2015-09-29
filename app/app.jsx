@@ -9,7 +9,7 @@ import React from 'react';
 import { Router } from 'react-router';
 
 import {App} from './components/App/App';
-import {Home,Portfolio,About} from './components/Home/Home';
+import {About, Portfolio, Resume, Home} from './components/Home/Home';
 
 import FluxComponent from 'flummox/component';
 
@@ -21,22 +21,18 @@ var routes = [
   { 
     path: '/',
     component: App,
-    indexRoute: { component: Home },
+    indexRoute: { component: Resume },
     childRoutes: [
-      { path: 'home', component: Home},
-      { path: 'about', component: About },
-      { path: 'portfolio', component: Portfolio }
+      { path: 'home'},
+      { path: 'resume', component: Resume},
+      { path: 'about'},
+      { path: 'portfolio'}
     ]
   }
 ]
 
 function createElement(Component, props){
-  return <FluxComponent flux={flux} connectToStores={{
-                                          pages: (store) => {
-                                            return store.getActive();
-                                          }
-                                        }}>
-
+  return <FluxComponent flux={flux}>
     <Component {...props} />
   </FluxComponent>
 }

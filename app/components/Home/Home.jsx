@@ -1,7 +1,8 @@
 import React from 'react';
 
-import {About} from './about';
-import {Portfolio} from './portfolio';
+import {About} from './About';
+import {Portfolio} from './Portfolio';
+import {Resume} from './Resume';
 
 export class Home extends React.Component {
 	render() {
@@ -11,4 +12,4 @@ export class Home extends React.Component {
 	}
 }
 
-export {About, Portfolio};
+export {About, Portfolio, Resume, Home};

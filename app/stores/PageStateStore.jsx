@@ -36,7 +36,7 @@ class PageStateStore extends Store {
   }
 
   handlePageChange(page) {
-    this.setState({page: page});
+    this.replaceState({page: page});
   }
 
   getActive(){
