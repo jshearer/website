@@ -11,6 +11,6 @@
 }
 
 #page-container {
-    width: 85%;
-    margin-left: auto;
+    min-width: 800px;
+    display: inline-block;
 }

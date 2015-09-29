@@ -16,17 +16,24 @@ export class Navbar extends React.Component {
 	}
 
 	componentDidMount(){
-		$('.ui.sticky').sticky({
-			offset: 20
-		});
+		if(this.props.stickyTo){
+			$('.ui.sticky').sticky({
+				offset: 20,
+				context: this.props.stickyTo
+			});
+		}
 	}
-
-
 
 	render() {
 		let that = this;
+
+		let vertical = '';
+		if(this.props.vertical){
+			vertical = 'vertical';
+		}
+
 		let layout = (
-				<div className={"ui vertical fluid sticky menu"}>
+				<div className={"ui "+vertical+" fluid sticky menu"}>
 					{
 						_.map(this.props.routes, (item, index)=>{
 							let active = '';
