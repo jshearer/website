@@ -23,10 +23,9 @@ var routes = [
     component: App,
     indexRoute: { component: Resume },
     childRoutes: [
-      { path: 'home'},
       { path: 'resume', component: Resume},
-      { path: 'about'},
       { path: 'portfolio'}
+      { path: 'about', component: About},
     ]
   }
 ]

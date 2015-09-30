@@ -3,6 +3,8 @@ import $ from 'jquery';
 import '../../semantic/dist/components/sticky.css';
 import '../../semantic/dist/components/sticky.js';
 
+import styles from '!!style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!./_navbar.css';
+
 import visitor from '../../ga';
 
 import size from 'window-size';
@@ -52,7 +54,7 @@ export class Navbar extends React.Component {
 							}
 
 							return (
-										<a className={"ui "+active+" "+disabled+" item"} onClick={_.bind(this.nagivateTo,that,item)} href={(()=>{
+										<a className={"ui "+active+" "+disabled+" item "+styles.menu_item} onClick={_.bind(this.nagivateTo,that,item)} href={(()=>{
 											if(item.component){
 												return "#/"+item.path;
 											} else{
