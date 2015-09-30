@@ -24,8 +24,8 @@ var routes = [
     indexRoute: { component: Resume },
     childRoutes: [
       { path: 'resume', component: Resume},
-      { path: 'portfolio'}
       { path: 'about', component: About},
+      { path: 'portfolio', component: Portfolio}
     ]
   }
 ]

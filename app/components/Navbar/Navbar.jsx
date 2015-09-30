@@ -66,10 +66,6 @@ export class Navbar extends React.Component {
 									)
 						})
 					}
-					<a className="ui disabled item"/>
-					<div className="ui active item">
-						More coming soon!
-					</div>
 				</div>
 			);
 		return layout;
