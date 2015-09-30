@@ -100,16 +100,6 @@ export class Resume extends React.Component {
 	render() {
 		return (
 			<div className={styles.body}>
-				<SubjectContainer label="Education">
-					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020" 
-						skills={[
-								{"name":"Studying","pct":65,"color":"green","bar":true},
-								{"name":"Learning","pct":80,"color":"blue","bar":true},
-								{"name":"Sleeping","pct":0,"color":"olive","bar":true}
-								]}>
-						<p className={styles.p}>B.S Computer Science</p>
-					</ComponentContainer>
-				</SubjectContainer>
 				<SubjectContainer label="Work Experience">
 					<ComponentContainer title="CeASAR - The Center for Adolescent Substance Abuse Research @ Harvard Medical School" 
 										location="Boston, MA" 
@@ -195,7 +185,31 @@ export class Resume extends React.Component {
 					<ComponentContainer title="Designspring, Inc." 
 										location="Westport, CT" 
 										time="December 2014 - May 2015"
-										website="www.designspring.com">
+										website="www.designspring.com"
+										right_info = 
+										{(
+											<div>
+												<h2 className="ui center aligned header">Harpsichord Skills</h2>
+												<Skill name="Python" color="red"/>
+												<Skill name="Flask" color="red"/>
+												<Skill name="Redis" color="teal"/>
+												<Skill name="SQL" color="grey"/>
+												<Skill name="SQLAlchemy" color="red"/>
+												<Skill name="Multiprocessing" color="red"/>
+												<Skill name="Parallel Task Execution" color="orange"/>
+												<Skill name="System Design" color="blue"/>
+												<Skill name="Coffee Shop Design" color="blue"/>
+												<Skill name="Documentation" color="grey"/>
+												<h2 className="ui center aligned header">Plasma Skills</h2>
+												<Skill name="Python" color="red"/>
+												<Skill name="PyCUDA" color="orange"/>
+												<Skill name="CUDA C" color="orange"/>
+												<Skill name="Matplotlib" color="blue"/>
+												<Skill name="Data analysis" color="blue"/>
+												<Skill name="Assembly Optimization" color="red"/>
+											</div>		
+										)}
+										>
 						<h3 className={styles.sub_title}>Harpsichord Project</h3>
 						<p className={styles.p}>Working in collaboration with Designspring Inc. and the music department
 			            at McGill University to design and develop a computer controlled analog
@@ -258,6 +272,16 @@ export class Resume extends React.Component {
 			                </ul>
 			              </li>
 			            </ul>
+					</ComponentContainer>
+				</SubjectContainer>
+				<SubjectContainer label="Education">
+					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020" 
+						skills={[
+								{"name":"Studying","pct":65,"color":"green","bar":true},
+								{"name":"Learning","pct":80,"color":"blue","bar":true},
+								{"name":"Sleeping","pct":0,"color":"olive","bar":true}
+								]}>
+						<p className={styles.p}>B.S Computer Science</p>
 					</ComponentContainer>
 				</SubjectContainer>
 			</div>
