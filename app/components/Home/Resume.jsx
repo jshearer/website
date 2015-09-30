@@ -3,6 +3,8 @@ import styles from '!!style-loader!css-loader?modules&localIdentName=[name]__[lo
 
 import '../../semantic/dist/components/label.css';
 
+import '../../semantic/dist/components/header.css';
+
 import '../../semantic/dist/components/progress.css';
 import '../../semantic/dist/components/progress.js';
 
@@ -40,7 +42,16 @@ class ComponentContainer extends React.Component{
 			            					<em>{this.props.time}</em><br />
 			            					<a href={this.props.website}>{this.props.website}</a>
 			            					{this.props.right_info}
-			            					{skills}
+			            					{(() => {
+			            						if(skills.length>0){
+			            							return (
+				            											<div>
+				            												<h2 className="ui center aligned header">Skills</h2>
+				            												{skills}
+				            											</div>
+			            											);
+			            						}
+			            					})(skills)}
 			            				</div>
 		            				)
 		          		} else {
@@ -79,7 +90,7 @@ class SkillBar extends React.Component{
 class Skill extends React.Component{
 	render(){
 		return (
-				<div className={"ui medium "+this.props.color+" label "+styles['label-fix']} data-percent={this.props.pct}>{this.props.name}: {this.props.pct}%</div>
+				<div className={"ui medium "+this.props.color+" label "+styles['label-fix']} data-percent={this.props.pct}>{this.props.name}</div>
 			);
 	}
 }
@@ -103,7 +114,25 @@ export class Resume extends React.Component {
 					<ComponentContainer title="CeASAR - The Center for Adolescent Substance Abuse Research @ Harvard Medical School" 
 										location="Boston, MA" 
 										time="June - August 2015"
-										website="www.ceasar.org">
+										website="www.ceasar.org"
+										skills={[
+											{"name":"Deployment","color":"teal"},
+											{"name":"AWS","color":"teal"},
+											{"name":"Heroku","color":"teal"},
+											{"name":"Java","color":"red"},
+											{"name":"Jetty","color":"red"},
+											{"name":"Jackson","color":"red"},
+											{"name":"Twilio","color":"blue"},
+											{"name":"Mandrill","color":"blue"},
+											{"name":"Javascript","color":"brown"},
+											{"name":"node.js","color":"brown"},
+											{"name":"Clojure","color":"olive"},
+											{"name":"HTML5/CSS3","color":"violet"},
+											{"name":"Git","color":"grey"},
+											{"name":"Linux","color":"grey"},
+											{"name":"Shell scripting","color":"grey"},
+											{"name":"Emacs","color":"grey"},
+											]}>
 						<p className={styles.p}>Worked with other developers on multiple parts of the software supporting a multiple-thousand participant study, including:</p>
 						<ul className={styles.ul}>
 							<li className={styles.li}>Automated study participant call-back</li>
@@ -122,7 +151,25 @@ export class Resume extends React.Component {
 					<ComponentContainer title="Narwhal Systems" 
 										location="Rochester, NY" 
 										time="October 2014 - Present"
-										website="www.narwhalsystems.com">
+										website="www.narwhalsystems.com"
+										skills={[
+												{"name":"Javascript","color":"brown"},
+												{"name":"ES6","color":"green"},
+												{"name":"Webpack","color":"red"},
+												{"name":"Browserify","color":"red"},
+												{"name":"Custom js build tools","color":"red"},
+												{"name":"Mapbox","color":"teal"},
+												{"name":"D3","color":"teal"},
+												{"name":"LESS/SASS","color":"orange"},
+												{"name":"Semantic UI","color":"orange"},
+												{"name":"SQL","color":"grey"},
+												{"name":"PHP","color":"grey"},
+												{"name":"Specification development","color":"green"},
+												{"name":"Wordpress","color":"blue"},
+												{"name":"AWS","color":"olive"},
+												{"name":"EC2","color":"olive"},
+												{"name":"RDS","color":"olive"},
+											]}>
 						<p className={styles.p}>Building reactive data visualizations and tools for ecological survey apps 
 												for field biology research on (currently) Sea Turtles in Florida, 
 												and Cotton Topped Tamarins in the Amazon rain forest, using:</p>
