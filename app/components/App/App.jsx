@@ -30,12 +30,17 @@ class App extends React.Component {
     return (
     	<div>
 	    	<div id="masthead" className="ui inverted vertical center aligned segment">
+	    		<div>
 	    		<h1 className="header">
 	    			Joseph Shearer
 	    		</h1>
 	    		<h4 className="subHeader">
 	    			.net
 	    		</h4>
+	    		</div>
+	    		<div>
+	    			joseph@josephshearer.net | (585) 732-0902 | <a href="https://github.com/jshearer">github.com/jshearer</a> | <a href="https://www.linkedin.com/in/jashearer">www.linkedin.com/in/jashearer</a>
+	    		</div>
 	    	</div>
 	    	<div className="ui container" id="body-container">
 		    	<div className="ui stackable grid">
