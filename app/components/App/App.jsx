@@ -26,7 +26,36 @@ class App extends React.Component {
   }
 
   render() {
-  	let a = 1;
+  	let { query } = this.props.location
+  	let content = null;
+
+  	if(query.pure){
+  		content = (
+	  				<FluxComponent>
+				    	{this.props.children}
+				    </FluxComponent>
+			    )
+  	} else{
+  		content = (
+					<div className="ui container" id="body-container">
+						<div className="ui stackable grid">
+					    	<div className="ui one wide column" />
+					    	<div className="ui two wide computer sixteen wide mobile column">
+						    	<FluxComponent>
+					    			<Navbar routes={this.props.routes[0].childRoutes} active_page={this.state.active_page} vertical={true} stickyTo="#page-container"/>
+					    		</FluxComponent>
+					    	</div>
+					    	<div className="ui twelve wide computer sixteen wide mobile column">
+						    	<div className="ui segment" id="page-container">
+						    		<FluxComponent>
+								    	{this.props.children}
+								    </FluxComponent>
+								</div>
+						    </div>
+					    </div>
+					</div>
+  				)
+  	}
     return (
     	<div>
 	    	<div id="masthead" className="ui inverted vertical center aligned segment">
@@ -42,23 +71,7 @@ class App extends React.Component {
 	    			joseph@josephshearer.net | (585) 732-0902 | <a href="https://github.com/jshearer">github.com/jshearer</a> | <a href="https://www.linkedin.com/in/jashearer">www.linkedin.com/in/jashearer</a>
 	    		</div>
 	    	</div>
-	    	<div className="ui container" id="body-container">
-		    	<div className="ui stackable grid">
-			    	<div className="ui one wide column" />
-			    	<div className="ui two wide computer sixteen wide mobile column">
-				    	<FluxComponent>
-			    			<Navbar routes={this.props.routes[0].childRoutes} active_page={this.state.active_page} vertical={true} stickyTo="#page-container"/>
-			    		</FluxComponent>
-			    	</div>
-			    	<div className="ui twelve wide computer sixteen wide mobile column">
-				    	<div className="ui segment" id="page-container">
-				    		<FluxComponent>
-						    	{this.props.children}
-						    </FluxComponent>
-		    			</div>
-				    </div>
-			    </div>
-			  </div>
+	    	{content}
 	    </div>
     );
   }

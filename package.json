@@ -25,6 +25,7 @@
     "webpack": "webpack --colors --progress --config ./webpack/config"
   },
   "dependencies": {
+    "beaverbird": "^0.5.1",
     "better-console": "^0.2.4",
     "bootstrap": "^3.3.5",
     "classnames": "^2.1.3",
