@@ -208,8 +208,7 @@ export class Resume extends React.Component {
 												<Skill name="Data analysis" color="blue"/>
 												<Skill name="Assembly Optimization" color="red"/>
 											</div>		
-										)}
-										>
+										)}>
 						<h3 className={styles.sub_title}>Harpsichord Project</h3>
 						<p className={styles.p}>Working in collaboration with Designspring Inc. and the music department
 			            at McGill University to design and develop a computer controlled analog
@@ -273,14 +272,50 @@ export class Resume extends React.Component {
 			              </li>
 			            </ul>
 					</ComponentContainer>
+					<ComponentContainer title="This Ground, Art Installation" 
+										location="New Deal Gallery, Mt. Morris, NY" 
+										time="March 14 – March 31 2015"
+										skills={[
+											{"name":"Embedded Systems", "color":"blue"},
+											{"name":"Soldering", "color":"blue"},
+											{"name":"Raspberry Pi", "color":"red"},
+											{"name":"Python", "color":"green"},
+											{"name":"Serial communication", "color":"teal"},
+											{"name":"Binary protocol reverse-engineering", "color":"teal"},
+											{"name":"Datasheet reading", "color":"orange"},
+											{"name":"Linux", "color":"grey"},
+											{"name":"Shell automation", "color":"grey"},
+											{"name":"Init scripts", "color":"grey"},
+										]}>
+						<p className={styles.p}>Worked with another engineer to design and develop a simple control system for an art installation</p>
+						<ul className={styles.ul}>
+							<li className={styles.li}>Implemented system using a Raspberry Pi</li>
+							<li className={styles.li}>Communicated with a thermal sensor IC using low level protocol</li>
+							<li className={styles.li}>Managed the launching and execution of different processes for playing video/audio</li>
+							<li className={styles.li}>Interacted with buttons and switches via GPIO</li>
+						</ul>
+					</ComponentContainer>
+					<ComponentContainer title="Springwater Center for Meditative Inquiry and Retreats" 
+										location="Springwater, NY" 
+										time="September 2014"
+										website="www.springwatercenter.org"
+										skills={[
+											{"name":"HTML5/CSS3","color":"violet"},
+											{"name":"Graphic design","color":"orange"},
+											{"name":"Wordpress","color":"blue"},
+											{"name":"Customer relations","color":"red"},
+										]}>
+						<p className={styles.p}>Rebuilt website for meditation retreat center using WordPress, including interactive features such as:</p>
+						<ul className={styles.ul}>
+							<li className={styles.li}>Calendar</li>
+							<li className={styles.li}>Automatically-generated ‘upcoming events’ listing</li>
+							<li className={styles.li}>Online store for purchase/download of library of recorded talks</li>
+							<li className={styles.li}>Old website was 100% static HTML. It had to be reimplemented as a WordPress theme.</li>
+						</ul>
+					</ComponentContainer>
 				</SubjectContainer>
 				<SubjectContainer label="Education">
-					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020" 
-						skills={[
-								{"name":"Studying","pct":65,"color":"green","bar":true},
-								{"name":"Learning","pct":80,"color":"blue","bar":true},
-								{"name":"Sleeping","pct":0,"color":"olive","bar":true}
-								]}>
+					<ComponentContainer title="Rochester Institute of Technology" location="Rochester, NY" time="May 2020">
 						<p className={styles.p}>B.S Computer Science</p>
 					</ComponentContainer>
 				</SubjectContainer>
